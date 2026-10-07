@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>योजना साथी | सरकारी योजनाएँ</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family:
+        "Noto Sans Devanagari",
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+      background: #f5f7fb;
+      color: #172033;
+      line-height: 1.6;
+    }
+
+    /* =========================
+       HEADER
+    ========================== */
+
+    header {
+      background: linear-gradient(
+        135deg,
+        #ff9933,
+        #ffffff,
+        #138808
+      );
+
+      padding: 4px;
+    }
+
+    .navbar {
+      background: #062b55;
+      color: white;
+
+      padding: 14px 6%;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 23px;
+      font-weight: 800;
+    }
+
+    .logo span {
+      color: #ff9933;
+    }
+
+    .nav-btn {
+      background: white;
+      color: #062b55;
+
+      border: none;
+      padding: 9px 15px;
+
+      border-radius: 8px;
+      cursor: pointer;
+
+      font-weight: bold;
+    }
+
+    /* =========================
+       HERO
+    ========================== */
+
+    .hero {
+      background:
+        linear-gradient(
+          135deg,
+          #063970,
+          #0b5cad
+        );
+
+      color: white;
+
+      text-align: center;
+
+      padding: 60px 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(30px, 5vw, 50px);
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: auto;
+
+      color: #e5efff;
+      font-size: 17px;
+    }
+
+    /* SEARCH */
+
+    .search-box {
+      max-width: 800px;
+      margin: 30px auto 0;
+
+      background: white;
+
+      padding: 6px;
+
+      border-radius: 12px;
+
+      display: flex;
+
+      box-shadow:
+        0 10px 30px rgba(0,0,0,.18);
+    }
+
+    .search-box input {
+      flex: 1;
+
+      border: none;
+      outline: none;
+
+      padding: 14px;
+
+      font-size: 16px;
+    }
+
+    .search-box button {
+      background: #ff7a00;
+      color: white;
+
+      border: none;
+
+      padding: 0 22px;
+
+      border-radius: 8px;
+
+      cursor: pointer;
+
+      font-weight: bold;
+    }
+
+    /* =========================
+       MAIN
+    ========================== */
+
+    .container {
+      width: 92%;
+      max-width: 1150px;
+
+      margin: 45px auto;
+    }
+
+    .section-title {
+      text-align: center;
+
+      margin-bottom: 25px;
+    }
+
+    .section-title h2 {
+      color: #073763;
+      font-size: 30px;
+    }
+
+    .section-title p {
+      color: #667085;
+    }
+
+    /* =========================
+       CATEGORY
+    ========================== */
+
+    .categories {
+      display: flex;
+
+      gap: 10px;
+
+      overflow-x: auto;
+
+      padding-bottom: 20px;
+    }
+
+    .category {
+      white-space: nowrap;
+
+      background: white;
+
+      border: 1px solid #dce4ef;
+
+      padding: 10px 17px;
+
+      border-radius: 25px;
+
+      cursor: pointer;
+    }
+
+    .category:hover,
+    .category.active {
+      background: #0b5cad;
+      color: white;
+    }
+
+    /* =========================
+       NOTICE
+    ========================== */
+
+    .notice {
+      background: #fff8e5;
+
+      border-left: 5px solid #ffad00;
+
+      padding: 15px;
+
+      border-radius: 7px;
+
+      margin: 20px 0 30px;
+
+      color: #674f00;
+    }
+
+    /* =========================
+       SCHEME CARDS
+    ========================== */
+
+    .schemes {
+      display: grid;
+
+      grid-template-columns:
+        repeat(
+          auto-fit,
+          minmax(280px, 1fr)
+        );
+
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+
+      border-radius: 15px;
+
+      padding: 23px;
+
+      border: 1px solid #e5eaf1;
+
+      box-shadow:
+        0 5px 18px rgba(16,24,40,.07);
+
+      transition: .2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+
+      box-shadow:
+        0 12px 30px rgba(16,24,40,.12);
+    }
+
+    .scheme-icon {
+      font-size: 36px;
+
+      margin-bottom: 10px;
+    }
+
+    .tag {
+      display: inline-block;
+
+      background: #fff0e2;
+
+      color: #d55c00;
+
+      padding: 4px 10px;
+
+      border-radius: 20px;
+
+      font-size: 12px;
+
+      margin-bottom: 10px;
+    }
+
+    .card h3 {
+      color: #073763;
+
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: #667085;
+
+      font-size: 14px;
+    }
+
+    .card-buttons {
+      display: flex;
+
+      gap: 8px;
+
+      margin-top: 18px;
+    }
+
+    .details-btn {
+      flex: 1;
+
+      background: #138808;
+
+      color: white;
+
+      border: none;
+
+      padding: 11px;
+
+      border-radius: 8px;
+
+      cursor: pointer;
+    }
+
+    .ai-btn {
+      background: #0b5cad;
+
+      color: white;
+
+      border: none;
+
+      padding: 11px 15px;
+
+      border-radius: 8px;
+
+      cursor: pointer;
+    }
+
+    /* =========================
+       AI SECTION
+    ========================== */
+
+    .ai-section {
+      background: #061a31;
+
+      color: white;
+
+      padding: 55px 20px;
+
+      margin-top: 50px;
+    }
+
+    .ai-container {
+      width: 92%;
+      max-width: 950px;
+
+      margin: auto;
+    }
+
+    .ai-title {
+      text-align: center;
+
+      margin-bottom: 25px;
+    }
+
+    .ai-title h2 {
+      font-size: 30px;
+    }
+
+    .ai-title p {
+      color: #bdc9d8;
+    }
+
+    /* CHAT */
+
+    .chat-box {
+      background: #102844;
+
+      border-radius: 15px;
+
+      padding: 20px;
+
+      min-height: 280px;
+
+      max-height: 500px;
+
+      overflow-y: auto;
+    }
+
+    .message {
+      padding: 13px 16px;
+
+      border-radius: 12px;
+
+      margin-bottom: 14px;
+
+      max-width: 90%;
+    }
+
+    .bot-message {
+      background: #1c385b;
+    }
+
+    .user-message {
+      background: #0b5cad;
+
+      margin-left: auto;
+    }
+
+    .chat-input {
+      display: flex;
+
+      gap: 10px;
+
+      margin-top: 15px;
+    }
+
+    .chat-input textarea {
+      flex: 1;
+
+      resize: none;
+
+      min-height: 58px;
+
+      padding: 13px;
+
+      border: none;
+
+      outline: none;
+
+      border-radius: 9px;
+
+      font-family: inherit;
+    }
+
+    .send-btn {
+      background: #138808;
+
+      color: white;
+
+      border: none;
+
+      padding: 0 22px;
+
+      border-radius: 9px;
+
+      cursor: pointer;
+
+      font-weight: bold;
+    }
+
+    /* =========================
+       MODAL
+    ========================== */
+
+    .modal {
+      position: fixed;
+
+      inset: 0;
+
+      background:
+        rgba(0,0,0,.65);
+
+      display: none;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding: 20px;
+
+      z-index: 999;
+    }
+
+    .modal.show {
+      display: flex;
+    }
+
+    .modal-content {
+      background: white;
+
+      width: 100%;
+      max-width: 680px;
+
+      max-height: 90vh;
+
+      overflow-y: auto;
+
+      padding: 25px;
+
+      border-radius: 15px;
+
+      position: relative;
+    }
+
+    .close {
+      position: absolute;
+
+      right: 15px;
+      top: 12px;
+
+      width: 35px;
+      height: 35px;
+
+      border: none;
+
+      border-radius: 50%;
+
+      background: #eee;
+
+      cursor: pointer;
+
+      font-size: 20px;
+    }
+
+    .modal-content h2 {
+      color: #073763;
+
+      padding-right: 40px;
+
+      margin-bottom: 18px;
+    }
+
+    .info {
+      background: #f5f7fb;
+
+      padding: 14px;
+
+      border-radius: 9px;
+
+      margin-bottom: 12px;
+    }
+
+    .info strong {
+      color: #073763;
+    }
+
+    .official-link {
+      display: inline-block;
+
+      background: #0b5cad;
+
+      color: white;
+
+      text-decoration: none;
+
+      padding: 11px 18px;
+
+      border-radius: 8px;
+
+      margin-top: 5px;
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    footer {
+      background: #031020;
+
+      color: #aab8c8;
+
+      text-align: center;
+
+      padding: 28px 15px;
+    }
+
+    footer p {
+      margin: 4px;
+    }
+
+    /* =========================
+       MOBILE
+    ========================== */
+
+    @media(max-width: 650px) {
+
+      .navbar {
+        padding: 13px 4%;
+      }
+
+      .logo {
+        font-size: 18px;
+      }
+
+      .hero {
+        padding: 45px 15px;
+      }
+
+      .search-box {
+        flex-direction: column;
+
+        gap: 5px;
+
+        background: transparent;
+      }
+
+      .search-box input {
+        border-radius: 8px;
+      }
+
+      .search-box button {
+        padding: 13px;
+      }
+
+      .chat-input {
+        flex-direction: column;
+      }
+
+      .send-btn {
+        padding: 13px;
+      }
+
+      .card-buttons {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+====================================================== -->
+
+<header>
+
+  <div class="navbar">
+
+    <div class="logo">
+      🇮🇳 योजना<span>साथी</span>
+    </div>
+
+    <button
+      class="nav-btn"
+      onclick="scrollToAI()"
+    >
+      🤖 AI सहायक
+    </button>
+
+  </div>
+
+</header>
+
+
+<!-- =====================================================
+     HERO
+====================================================== -->
+
+<section class="hero">
+
+  <h1>
+    सरकारी योजनाएँ खोजें
+  </h1>
+
+  <p>
+    भारत सरकार की योजनाओं की जानकारी
+    आसान हिंदी में प्राप्त करें।
+  </p>
+
+
+  <div class="search-box">
+
+    <input
+      id="searchInput"
+      type="text"
+      placeholder="जैसे किसान, छात्रवृत्ति, आवास, महिला..."
+    >
+
+    <button onclick="searchSchemes()">
+      🔍 खोजें
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     SCHEMES
+====================================================== -->
+
+<main class="container">
+
+
+  <div class="section-title">
+
+    <h2>
+      लोकप्रिय सरकारी योजनाएँ
+    </h2>
+
+    <p>
+      अपनी जरूरत के अनुसार योजना चुनें।
+    </p>
+
+  </div>
+
+
+  <!-- CATEGORY -->
+
+  <div class="categories">
+
+    <button
+      class="category active"
+      onclick="filterCategory('सभी', this)"
+    >
+      सभी
+    </button>
+
+    <button
+      class="category"
+      onclick="filterCategory('किसान', this)"
+    >
+      🌾 किसान
+    </button>
+
+    <button
+      class="category"
+      onclick="filterCategory('महिला', this)"
+    >
+      👩 महिला
+    </button>
+
+    <button
+      class="category"
+      onclick="filterCategory('शिक्षा', this)"
+    >
+      🎓 शिक्षा
+    </button>
+
+    <button
+      class="category"
+      onclick="filterCategory('रोजगार', this)"
+    >
+      💼 रोजगार
+    </button>
+
+    <button
+      class="category"
+      onclick="filterCategory('स्वास्थ्य', this)"
+    >
+      🏥 स्वास्थ्य
+    </button>
+
+    <button
+      class="category"
+      onclick="filterCategory('आवास', this)"
+    >
+      🏠 आवास
+    </button>
+
+    <button
+      class="category"
+      onclick="filterCategory('वित्त', this)"
+    >
+      💰 वित्त
+    </button>
+
+  </div>
+
+
+  <div class="notice">
+
+    ⚠️ सरकारी योजनाओं की पात्रता, राशि और नियम
+    समय के साथ बदल सकते हैं। आवेदन करने से पहले
+    संबंधित आधिकारिक सरकारी वेबसाइट पर जानकारी
+    जरूर सत्यापित करें।
+
+  </div>
+
+
+  <div
+    class="schemes"
+    id="schemeList"
+  ></div>
+
+
+</main>
+
+
+<!-- =====================================================
+     AI
+====================================================== -->
+
+<section
+  class="ai-section"
+  id="aiSection"
+>
+
+  <div class="ai-container">
+
+
+    <div class="ai-title">
+
+      <h2>
+        🤖 योजना साथी AI
+      </h2>
+
+      <p>
+        सरकारी योजनाओं के बारे में हिंदी में सवाल पूछें।
+      </p>
+
+    </div>
+
+
+    <div
+      class="chat-box"
+      id="chatBox"
+    >
+
+      <div class="message bot-message">
+
+        नमस्ते! 🙏
+
+        <br><br>
+
+        मैं आपको सरकारी योजनाओं को समझने में मदद कर सकता हूँ।
+
+        <br><br>
+
+        उदाहरण:
+        <br>
+
+        • मैं किसान हूँ, मेरे लिए कौन सी योजनाएँ हैं?
+        <br>
+
+        • PM-KISAN में कौन आवेदन कर सकता है?
+        <br>
+
+        • मुझे छात्रवृत्ति चाहिए।
+        <br>
+
+        • मध्य प्रदेश में महिलाओं के लिए कौन सी योजनाएँ हैं?
+
+      </div>
+
+    </div>
+
+
+    <div class="chat-input">
+
+      <textarea
+        id="question"
+        placeholder="अपना सवाल यहाँ लिखें..."
+      ></textarea>
+
+      <button
+        class="send-btn"
+        onclick="askAI()"
+      >
+        पूछें ➤
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     MODAL
+====================================================== -->
+
+<div
+  class="modal"
+  id="modal"
+>
+
+  <div class="modal-content">
+
+    <button
+      class="close"
+      onclick="closeModal()"
+    >
+      ×
+    </button>
+
+
+    <h2 id="modalTitle"></h2>
+
+
+    <div class="info">
+
+      <strong>
+        🎯 उद्देश्य
+      </strong>
+
+      <p id="modalPurpose"></p>
+
+    </div>
+
+
+    <div class="info">
+
+      <strong>
+        👤 पात्रता
+      </strong>
+
+      <p id="modalEligibility"></p>
+
+    </div>
+
+
+    <div class="info">
+
+      <strong>
+        🎁 लाभ
+      </strong>
+
+      <p id="modalBenefits"></p>
+
+    </div>
+
+
+    <div class="info">
+
+      <strong>
+        📄 आवश्यक दस्तावेज
+      </strong>
+
+      <p id="modalDocuments"></p>
+
+    </div>
+
+
+    <div class="info">
+
+      <strong>
+        📝 आवेदन कैसे करें?
+      </strong>
+
+      <p id="modalApply"></p>
+
+    </div>
+
+
+    <a
+      id="officialLink"
+      class="official-link"
+      href="#"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      🌐 आधिकारिक वेबसाइट
+    </a>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     FOOTER
+====================================================== -->
+
+<footer>
+
+  <p>
+    🇮🇳 योजना साथी
+  </p>
+
+  <p>
+    सरकारी योजनाओं की जानकारी आसान हिंदी में।
+  </p>
+
+  <p>
+    AI द्वारा दी गई जानकारी को आधिकारिक सरकारी
+    स्रोत से सत्यापित करें।
+  </p>
+
+</footer>
+
+
+<script>
+
+/* =====================================================
+   1. अपनी GROQ API KEY यहाँ डालें
+======================================================
+
+   उदाहरण:
+
+   const GROQ_API_KEY = "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";
+
+   ⚠️ WARNING:
+   Browser वाली website में API key दिखाई जा सकती है।
+   यह तरीका learning/demo के लिए है।
+
+====================================================== */
+
+const GROQ_API_KEY =
+"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";
+
+
+/* =====================================================
+   2. GROQ MODEL
+====================================================== */
+
+const GROQ_MODEL =
+  "openai/gpt-oss-120b";
+
+
+/* =====================================================
+   3. GOVERNMENT SCHEMES
+====================================================== */
+
+const schemes = [
+
+  {
+    name: "प्रधानमंत्री किसान सम्मान निधि (PM-KISAN)",
+
+    category: "किसान",
+
+    icon: "🌾",
+
+    purpose:
+      "पात्र किसान परिवारों को कृषि संबंधी जरूरतों में आर्थिक सहायता प्रदान करना।",
+
+    eligibility:
+      "पात्र किसान परिवार, लागू सरकारी नियमों और रिकॉर्ड के अनुसार।",
+
+    benefits:
+      "योजना के वर्तमान नियमों के अनुसार पात्र किसानों को वित्तीय सहायता।",
+
+    documents:
+      "आधार कार्ड, बैंक खाता तथा संबंधित किसान/भूमि रिकॉर्ड आवश्यक हो सकते हैं।",
+
+    apply:
+      "आधिकारिक PM-KISAN पोर्टल या संबंधित सरकारी माध्यम से आवेदन और स्थिति की जानकारी प्राप्त करें।",
+
+    link:
+      "https://pmkisan.gov.in/"
+  },
+
+
+  {
+    name: "प्रधानमंत्री आवास योजना",
+
+    category: "आवास",
+
+    icon: "🏠",
+
+    purpose:
+      "पात्र परिवारों को पक्का आवास उपलब्ध कराने में सहायता करना।",
+
+    eligibility:
+      "ग्रामीण और शहरी क्षेत्र के अनुसार पात्रता और नियम अलग हो सकते हैं।",
+
+    benefits:
+      "पात्र लाभार्थियों को आवास निर्माण या संबंधित सहायता मिल सकती है।",
+
+    documents:
+      "आधार, पहचान पत्र, बैंक विवरण और अन्य आवश्यक दस्तावेज।",
+
+    apply:
+      "संबंधित सरकारी पोर्टल या स्थानीय सरकारी कार्यालय के माध्यम से जानकारी प्राप्त करें।",
+
+    link:
+      "https://pmaymis.gov.in/"
+  },
+
+
+  {
+    name: "आयुष्मान भारत प्रधानमंत्री जन आरोग्य योजना",
+
+    category: "स्वास्थ्य",
+
+    icon: "🏥",
+
+    purpose:
+      "पात्र परिवारों को स्वास्थ्य उपचार के लिए सहायता उपलब्ध कराना।",
+
+    eligibility:
+      "पात्रता संबंधित सरकारी डेटाबेस और वर्तमान नियमों के अनुसार निर्धारित होती है।",
+
+    benefits:
+      "पात्र लाभार्थियों को निर्धारित स्वास्थ्य सेवाओं के लिए कवरेज मिल सकता है।",
+
+    documents:
+      "आधार और अन्य पहचान संबंधी दस्तावेज आवश्यक हो सकते हैं।",
+
+    apply:
+      "आधिकारिक Ayushman Bharat पोर्टल या संबंधित सरकारी स्वास्थ्य केंद्र से जानकारी लें।",
+
+    link:
+      "https://pmjay.gov.in/"
+  },
+
+
+  {
+    name: "प्रधानमंत्री मुद्रा योजना",
+
+    category: "वित्त",
+
+    icon: "💰",
+
+    purpose:
+      "छोटे व्यवसाय और स्वरोजगार के लिए वित्तीय सहायता तक पहुंच बढ़ाना।",
+
+    eligibility:
+      "छोटे व्यवसायी और उद्यमी योजना के लागू नियमों के अनुसार आवेदन कर सकते हैं।",
+
+    benefits:
+      "पात्र व्यवसायों के लिए ऋण सुविधा उपलब्ध हो सकती है।",
+
+    documents:
+      "KYC, बैंक दस्तावेज और व्यवसाय संबंधी दस्तावेज आवश्यक हो सकते हैं।",
+
+    apply:
+      "अधिकृत बैंक या संबंधित वित्तीय संस्था से जानकारी प्राप्त करें।",
+
+    link:
+      "https://www.mudra.org.in/"
+  },
+
+
+  {
+    name: "प्रधानमंत्री उज्ज्वला योजना",
+
+    category: "महिला",
+
+    icon: "🔥",
+
+    purpose:
+      "पात्र परिवारों को स्वच्छ खाना पकाने के ईंधन की सुविधा उपलब्ध कराने में सहायता करना।",
+
+    eligibility:
+      "योजना के वर्तमान नियमों के अनुसार पात्र परिवारों की महिलाएँ लाभ प्राप्त कर सकती हैं।",
+
+    benefits:
+      "LPG कनेक्शन से संबंधित सहायता योजना के नियमों के अनुसार उपलब्ध हो सकती है।",
+
+    documents:
+      "आधार, पहचान और बैंक संबंधी दस्तावेज आवश्यक हो सकते हैं।",
+
+    apply:
+      "आधिकारिक PMUY पोर्टल या संबंधित LPG वितरक से जानकारी प्राप्त करें।",
+
+    link:
+      "https://www.pmuy.gov.in/"
+  },
+
+
+  {
+    name: "सुकन्या समृद्धि योजना",
+
+    category: "महिला",
+
+    icon: "👧",
+
+    purpose:
+      "बालिकाओं की शिक्षा और भविष्य के लिए बचत को प्रोत्साहित करना।",
+
+    eligibility:
+      "योजना के लागू नियमों के अनुसार पात्र बालिका के नाम पर खाता खोला जा सकता है।",
+
+    benefits:
+      "बालिका के भविष्य के लिए दीर्घकालीन बचत सुविधा।",
+
+    documents:
+      "बालिका का जन्म प्रमाण पत्र और अभिभावक के आवश्यक दस्तावेज।",
+
+    apply:
+      "अधिकृत बैंक या डाकघर से योजना की जानकारी प्राप्त करें।",
+
+    link:
+      "https://www.indiapost.gov.in/"
+  },
+
+
+  {
+    name: "प्रधानमंत्री कौशल विकास योजना",
+
+    category: "रोजगार",
+
+    icon: "🛠️",
+
+    purpose:
+      "युवाओं को कौशल प्रशिक्षण देकर रोजगार के अवसर बढ़ाना।",
+
+    eligibility:
+      "प्रशिक्षण कार्यक्रम के अनुसार पात्रता अलग हो सकती है।",
+
+    benefits:
+      "कौशल प्रशिक्षण और प्रमाणन के अवसर।",
+
+    documents:
+      "आधार और आवश्यक पहचान/शैक्षणिक दस्तावेज।",
+
+    apply:
+      "Skill India के आधिकारिक पोर्टल और अधिकृत प्रशिक्षण केंद्रों से जानकारी लें।",
+
+    link:
+      "https://www.skillindiadigital.gov.in/"
+  },
+
+
+  {
+    name: "प्रधानमंत्री जन धन योजना",
+
+    category: "वित्त",
+
+    icon: "🏦",
+
+    purpose:
+      "नागरिकों को बैंकिंग और वित्तीय सेवाओं से जोड़ना।",
+
+    eligibility:
+      "लागू बैंकिंग और KYC नियमों के अनुसार।",
+
+    benefits:
+      "बैंकिंग सेवाओं तक पहुंच और योजना के लागू लाभ।",
+
+    documents:
+      "आधार या अन्य वैध KYC दस्तावेज।",
+
+    apply:
+      "अधिकृत बैंक शाखा में जाकर जानकारी प्राप्त करें।",
+
+    link:
+      "https://pmjdy.gov.in/"
+  },
+
+
+  {
+    name: "प्रधानमंत्री फसल बीमा योजना",
+
+    category: "किसान",
+
+    icon: "🌱",
+
+    purpose:
+      "किसानों को फसल संबंधी जोखिमों के विरुद्ध बीमा सुरक्षा देना।",
+
+    eligibility:
+      "पात्रता अधिसूचित फसल, क्षेत्र और वर्तमान योजना नियमों पर निर्भर करती है।",
+
+    benefits:
+      "निर्धारित जोखिमों से फसल नुकसान होने पर योजना के नियमों के अनुसार बीमा सहायता।",
+
+    documents:
+      "किसान पहचान, बैंक विवरण और फसल/भूमि से जुड़े दस्तावेज।",
+
+    apply:
+      "राज्य में लागू प्रक्रिया के अनुसार बैंक, बीमा कंपनी या सरकारी माध्यम से आवेदन करें।",
+
+    link:
+      "https://pmfby.gov.in/"
+  },
+
+
+  {
+    name: "राष्ट्रीय छात्रवृत्ति पोर्टल",
+
+    category: "शिक्षा",
+
+    icon: "🎓",
+
+    purpose:
+      "विद्यार्थियों को विभिन्न सरकारी छात्रवृत्तियों तक पहुंच उपलब्ध कराना।",
+
+    eligibility:
+      "हर छात्रवृत्ति की पात्रता अलग हो सकती है।",
+
+    benefits:
+      "पात्र विद्यार्थियों को संबंधित छात्रवृत्ति के अनुसार आर्थिक सहायता।",
+
+    documents:
+      "आधार, शैक्षणिक प्रम
